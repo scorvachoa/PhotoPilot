@@ -1,0 +1,368 @@
+Quiero desarrollar una aplicación profesional de escritorio en Python utilizando Tkinter como interfaz gráfica, Pillow para el procesamiento de imágenes y OpenCV para las funciones inteligentes de análisis.
+
+El nombre del proyecto será "PhotoPilot".
+
+El código debe estar completamente modularizado, documentado y organizado siguiendo buenas prácticas de programación.
+
+=========================
+OBJETIVO
+=========================
+
+La aplicación permitirá procesar cientos o miles de fotografías automáticamente mediante un solo clic.
+
+El flujo de trabajo será:
+
+1. Seleccionar carpeta de imágenes.
+2. Detectar automáticamente todas las fotografías compatibles.
+3. Analizar cada imagen.
+4. Aplicar recorte inteligente.
+5. Aplicar mejoras automáticas.
+6. Mostrar vista previa.
+7. Guardar las imágenes optimizadas en una carpeta de salida.
+
+Nunca modificar las imágenes originales.
+
+=========================
+INTERFAZ
+=========================
+
+La interfaz debe estar desarrollada con Tkinter moderno.
+
+Debe contener:
+
+- Barra superior con el nombre del proyecto.
+- Botón para seleccionar carpeta origen.
+- Botón para seleccionar carpeta destino.
+- Vista previa grande de la fotografía.
+- Lista lateral de fotografías.
+- Barra de progreso.
+- Estado del procesamiento.
+- Consola inferior con mensajes.
+
+Panel derecho con herramientas.
+
+Botones:
+
+• Recorte automático
+• Mejorar automáticamente
+• Restablecer
+• Aplicar a esta foto
+• Aplicar a todas
+• Procesar carpeta
+
+=========================
+RECORTE AUTOMÁTICO
+=========================
+
+Detectar automáticamente si la imagen es:
+
+Horizontal
+
+Vertical
+
+Cuadrada
+
+Calcular la relación de aspecto.
+
+Elegir automáticamente el formato Facebook adecuado.
+
+Horizontal:
+1200 x 630
+
+Vertical:
+1080 x 1350
+
+Cuadrado:
+1080 x 1080
+
+No deformar jamás una imagen.
+
+Siempre mantener la proporción.
+
+=========================
+RECORTE INTELIGENTE
+=========================
+
+Usar OpenCV.
+
+Detectar:
+
+Rostros
+
+Personas
+
+Objetos principales
+
+Si existen rostros:
+
+Mantener siempre los rostros dentro del encuadre.
+
+Si existen varias personas:
+
+Buscar el mejor recorte posible.
+
+Si no existen personas:
+
+Centrar el objeto principal.
+
+Si no se detecta nada:
+
+Realizar un recorte centrado.
+
+=========================
+MEJORA AUTOMÁTICA
+=========================
+
+Analizar la fotografía.
+
+Detectar:
+
+Nivel de brillo
+
+Contraste
+
+Saturación
+
+Temperatura de color
+
+Nitidez
+
+Ruido
+
+Exposición
+
+Sombras
+
+Altas luces
+
+Balance de blancos
+
+Según el análisis aplicar automáticamente:
+
+Corrección de exposición.
+
+Corrección de brillo.
+
+Aumento de contraste.
+
+Corrección de color.
+
+Balance de blancos automático.
+
+Incremento de nitidez.
+
+Reducción de ruido.
+
+Mejora de sombras.
+
+Recuperación de altas luces.
+
+Aumento moderado de saturación.
+
+No exagerar los efectos.
+
+La imagen debe verse natural.
+
+=========================
+CONTROLES MANUALES
+=========================
+
+Agregar sliders para:
+
+Brillo
+
+Contraste
+
+Saturación
+
+Exposición
+
+Nitidez
+
+Temperatura
+
+Sombras
+
+Altas luces
+
+Gamma
+
+Reducción de ruido
+
+Todos deben actualizar la vista previa en tiempo real.
+
+=========================
+APLICAR A TODAS
+=========================
+
+Si el usuario modifica una imagen manualmente:
+
+Guardar todos los parámetros.
+
+Aplicar exactamente los mismos ajustes al resto de fotografías.
+
+=========================
+VISTA PREVIA
+=========================
+
+Mostrar:
+
+Original
+
+Resultado
+
+Permitir hacer zoom.
+
+Mover la imagen.
+
+Comparar antes/después.
+
+=========================
+PROCESAMIENTO POR LOTES
+=========================
+
+Procesar todas las imágenes automáticamente.
+
+Mostrar:
+
+Barra de progreso.
+
+Tiempo restante.
+
+Cantidad procesada.
+
+Errores encontrados.
+
+Tiempo total.
+
+=========================
+FORMATOS SOPORTADOS
+=========================
+
+JPG
+
+JPEG
+
+PNG
+
+WEBP
+
+TIFF
+
+BMP
+
+=========================
+EXPORTACIÓN
+=========================
+
+Guardar:
+
+JPG
+
+PNG
+
+WEBP
+
+Elegir calidad.
+
+Mantener metadatos EXIF cuando sea posible.
+
+Permitir renombrar automáticamente.
+
+Agregar sufijos.
+
+=========================
+RENDIMIENTO
+=========================
+
+Utilizar procesamiento multihilo para mantener la interfaz fluida.
+
+No bloquear la interfaz.
+
+Optimizar memoria para miles de imágenes.
+
+=========================
+ESTRUCTURA DEL PROYECTO
+=========================
+
+PhotoPilot/
+
+main.py
+
+gui/
+
+core/
+
+processing/
+
+opencv/
+
+preview/
+
+utils/
+
+config/
+
+assets/
+
+output/
+
+logs/
+
+=========================
+CALIDAD DEL CÓDIGO
+=========================
+
+Usar clases.
+
+Tipado (type hints).
+
+Documentación.
+
+Comentarios claros.
+
+PEP8.
+
+Separar lógica de interfaz.
+
+No escribir código duplicado.
+
+=========================
+FUTURAS FUNCIONES
+=========================
+
+La arquitectura debe permitir agregar fácilmente:
+
+Instagram.
+
+TikTok.
+
+LinkedIn.
+
+Pinterest.
+
+Miniaturas para YouTube.
+
+Marca de agua.
+
+Firma automática.
+
+IA para seleccionar la mejor fotografía.
+
+Reconocimiento de paisajes.
+
+Detección de cielo.
+
+Reemplazo de cielo.
+
+Eliminación de fondo.
+
+Super resolución.
+
+Exportación en diferentes perfiles de color.
+
+=========================
+OBJETIVO FINAL
+=========================
+
+El resultado debe ser un software profesional de procesamiento masivo de fotografías, con una interfaz moderna, rápida, intuitiva y escalable, orientado a fotógrafos, agencias de turismo, community managers y empresas que necesitan optimizar grandes cantidades de imágenes con un solo clic, manteniendo siempre la máxima calidad visual y una experiencia de usuario eficiente.
