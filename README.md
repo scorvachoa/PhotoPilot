@@ -1,73 +1,73 @@
 # PhotoPilot
 
-PhotoPilot is a professional desktop photo editing application built with Python (Tkinter + Pillow + OpenCV). It offers a non-destructive, Lightroom-style workflow for batch photo processing — adjustments, smart crop, and export.
+PhotoPilot es una aplicación de edición de fotos profesional para escritorio, construida con Python (Tkinter + Pillow + OpenCV). Ofrece un flujo de trabajo no destructivo estilo Lightroom para procesamiento por lotes — ajustes, recorte inteligente y exportación.
 
-## Features
+## Características
 
-- **Non-destructive editing** — each image preserves its own crop preset, crop center, and 10 adjustment sliders independently
-- **10 manual adjustments**: brightness, contrast, saturation, exposure, temperature, shadows, highlights, sharpness, gamma, noise reduction
-- **Auto enhance** — automatic brightness, contrast, saturation, white balance, and sharpening
-- **Smart crop** — face detection blended with user-defined crop center, drag directly on the preview to reposition
-- **32 crop presets** across 7 platforms (Facebook, Instagram, LinkedIn, Pinterest, Twitter/X, YouTube, Custom)
-- **Batch processing** — multithreaded with progress bar, ETA, and error counting
-- **Export** — single image or batch export in JPG, PNG, WebP with configurable quality
+- **Edición no destructiva** — cada imagen conserva su propio preset de recorte, centro de recorte y 10 ajustes independientes
+- **10 ajustes manuales**: brillo, contraste, saturación, exposición, temperatura, sombras, altas luces, nitidez, gamma, reducción de ruido
+- **Mejora automática** — brillo, contraste, saturación, balance de blancos y nitidez
+- **Recorte inteligente** — detección de rostros combinada con centro definido por el usuario, arrastra directamente en la previsualización para reposicionar
+- **32 presets de recorte** en 7 plataformas (Facebook, Instagram, LinkedIn, Pinterest, Twitter/X, YouTube, Personalizado)
+- **Procesamiento por lotes** — multihilo con barra de progreso, ETA y conteo de errores
+- **Exportación** — foto individual o lote en JPG, PNG, WebP con calidad configurable
 
-## Requirements
+## Requisitos
 
 - Python 3.11+
 - Pillow
-- OpenCV (lazy-loaded to avoid OpenBLAS crash)
+- OpenCV (carga diferida para evitar error OpenBLAS)
 - numpy
 - tkinterdnd2
 
-## Installation
+## Instalación
 
 ```bash
-git clone https://github.com/yourusername/photopilot.git
+git clone https://github.com/tuusuario/photopilot.git
 cd photopilot
 python -m venv env
 env\Scripts\activate        # Windows
 pip install -r requirements.txt
 ```
 
-## Usage
+## Uso
 
 ```bash
 python main.py
 ```
 
-1. Click **"Abrir imagenes"** or drag-and-drop images/folders onto the window
-2. Select a folder with **"Carpeta origen"**
-3. Set output directory with **"Carpeta destino"**
-4. Click a thumbnail to edit
-5. Use crop presets and drag the preview to reposition
-6. Adjust sliders for fine-tuning
-7. Click **"Mejorar automaticamente"** for auto-enhance
-8. Export with **"Exportar esta foto"** or **"Exportar todas"**
-9. Use **"Procesar carpeta"** for batch processing
+1. Haz clic en **"Abrir imagenes"** o arrastra imágenes/carpetas a la ventana
+2. Selecciona una carpeta con **"Carpeta origen"**
+3. Elige la carpeta de destino con **"Carpeta destino"**
+4. Haz clic en una miniatura para editar
+5. Usa los presets de recorte y arrastra la previsualización para reposicionar
+6. Ajusta los deslizadores para ajuste fino
+7. Activa **"Mejorar automaticamente"** para auto-mejora
+8. Exporta con **"Exportar esta foto"** o **"Exportar todas"**
+9. Usa **"Procesar carpeta"** para procesamiento por lotes
 
-## Project Structure
+## Estructura del proyecto
 
 ```
 PhotoPilot/
-├── main.py                 # Entry point
-├── config/                 # Theme, constants, settings
-├── core/                   # State, pipeline, batch processor, exporter
-├── gui/                    # Tkinter UI (app, widgets, sliders, crop presets)
-├── opencv/                 # Smart crop with face detection
-├── processing/             # Auto enhance, manual adjustments
-├── utils/                  # Validators, aspect ratio helpers
-└── assets/                 # Static resources
+├── main.py                 # Punto de entrada
+├── config/                 # Tema, constantes, configuración
+├── core/                   # Estado, pipeline, procesador por lotes, exportador
+├── gui/                    # Interfaz Tkinter (app, widgets, sliders, presets)
+├── opencv/                 # Recorte inteligente con detección de rostros
+├── processing/             # Mejora automática, ajustes manuales
+├── utils/                  # Validadores, helpers de relación de aspecto
+└── assets/                 # Recursos estáticos
 ```
 
-## Architecture
+## Arquitectura
 
-- **`AppState`** stores all per-image state in dicts (`_crop_presets`, `_crop_centers`, `_processing_settings`)
-- **`ProcessingPipeline`** chains: auto-enhance → smart crop → manual adjustments
-- **`PreviewPanel`** shows the processed result by default, switches to original + overlay during crop drag
-- **`Exporter`** saves processed images with format-aware quality settings
-- **`BatchProcessor`** runs multithreaded with real-time progress updates
+- **`AppState`** almacena todo el estado por imagen en diccionarios (`_crop_presets`, `_crop_centers`, `_processing_settings`)
+- **`ProcessingPipeline`** encadena: mejora automática → recorte inteligente → ajustes manuales
+- **`PreviewPanel`** muestra el resultado procesado por defecto, cambia a original + superposición durante el arrastre de recorte
+- **`Exporter`** guarda imágenes procesadas con configuración de calidad según formato
+- **`BatchProcessor`** ejecuta en multihilo con actualizaciones de progreso en tiempo real
 
-## License
+## Licencia
 
 MIT
