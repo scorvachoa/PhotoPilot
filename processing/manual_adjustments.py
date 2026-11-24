@@ -59,6 +59,8 @@ class ManualAdjustments:
             img = Image.fromarray(arr)
 
         if s.noise_reduction > 0:
-            img = img.filter(ImageFilter.MedianFilter(size=3))
+            denoised = img.filter(ImageFilter.MedianFilter(size=3))
+            img = Image.blend(img, denoised,
+                              max(0.0, min(1.0, s.noise_reduction)))
 
         return img

@@ -42,7 +42,8 @@ class AppState:
     @crop_center_x.setter
     def crop_center_x(self, value: float) -> None:
         cx, cy = self._crop_centers.get(self.current_index, (0.5, 0.5))
-        self._crop_centers[self.current_index] = (value, cy)
+        self._crop_centers[self.current_index] = (
+            max(0.0, min(1.0, value)), cy)
 
     @property
     def crop_center_y(self) -> float:
@@ -51,14 +52,21 @@ class AppState:
     @crop_center_y.setter
     def crop_center_y(self, value: float) -> None:
         cx, cy = self._crop_centers.get(self.current_index, (0.5, 0.5))
-        self._crop_centers[self.current_index] = (cx, value)
+        self._crop_centers[self.current_index] = (
+            cx, max(0.0, min(1.0, value)))
 
     def set_crop_center(self, index: int, x: float, y: float) -> None:
-        self._crop_centers[index] = (x, y)
+        self._crop_centers[index] = (
+            max(0.0, min(1.0, x)), max(0.0, min(1.0, y)))
 
     def apply_center_to_all(self, x: float, y: float) -> None:
+        x = max(0.0, min(1.0, x))
+        y = max(0.0, min(1.0, y))
         for i in range(len(self.images)):
             self._crop_centers[i] = (x, y)
+
+    def has_crop_center(self, index: int) -> bool:
+        return index in self._crop_centers
 
     @property
     def processing(self) -> ProcessingSettings:
